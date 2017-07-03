@@ -1,19 +1,16 @@
-apt-get install -y curl
+cd /opt
 
-node_version=$(curl --silent --get --data-urlencode "range=${semver_range}" https://semver.io/node/resolve)
+wget https://nodejs.org/download/release/v0.12.18/node-v0.12.18.tar.gz
 
-wget --no-verbose -O /tmp/node-$node_version.tar.gz http://nodejs.org/dist/v$node_version/node-v$node_version.tar.gz
+tar -xzvf node-v0.12.18.tar.gz
 
-mkdir -p /opt/node
-
-tar xzf /tmp/node-$node_version.tar.gz --strip-components=1 -C /opt/node
-rm -f /tmp/node-$node_version.tar.gz
-
-cd /opt/node/
+cd node-v0.12.18
 
 ./configure
-make  -s >/dev/null
-make install  -s >/dev/null
+
+make
+
+make install
 
 cd /
 

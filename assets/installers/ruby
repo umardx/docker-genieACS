@@ -1,16 +1,19 @@
-wget --no-verbose -O /tmp/ruby-2.1.1.tar.gz http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.1.tar.gz
+cd /opt
 
-mkdir -p /opt/ruby
+wget https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.4.tar.gz
 
-tar xzf /tmp/ruby-2.1.1.tar.gz --strip-components=1 -C /opt/ruby
-rm -f /tmp/ruby-2.1.1.tar.gz
+tar -zxvf ruby-2.3.4.tar.gz
 
-cd /opt/ruby
+cd ruby-2.3.4
 
 ./configure
-make  -s >/dev/null
-make install  -s >/dev/null
+
+make
+
+make install
+
 gem install rails
+
 gem install bundle
 
 cd /
